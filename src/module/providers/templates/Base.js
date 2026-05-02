@@ -1,4 +1,4 @@
-import { t } from "../../utils.js";
+import { findStatusEffect, t } from "../../utils.js";
 
 export default class EstimationProvider {
 	constructor() {
@@ -30,14 +30,15 @@ export default class EstimationProvider {
 		 * Configuration for the Death Marker setting.
 		 * @type {Object}
 		 */
+		const dead = findStatusEffect("dead");
 		this.deathMarker = {
 			/** Sets if the setting will be visible in the module's settings */
 			config:
-				!CONFIG.statusEffects.find((x) => x.id === "dead")
+				!dead
 				|| game.modules.get("combat-utility-belt")?.active
 				|| game.modules.get("condition-lab-triggler")?.active,
 			/** Sets the setting's default value */
-			default: CONFIG.statusEffects.find((x) => x.id === "dead")?.img || "icons/svg/skull.svg",
+			default: dead?.img || "icons/svg/skull.svg",
 		};
 
 		/**

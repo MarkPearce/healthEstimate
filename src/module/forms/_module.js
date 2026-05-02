@@ -1,4 +1,4 @@
-export { default as BehaviorSettings } from "./BehaviorSettings";
-export { default as EstimationSettings } from "./EstimationSettings";
-export { default as StyleSettings } from "./StyleSettings";
+export { default as BehaviorSettings } from "./BehaviorSettings.js";
+export { default as EstimationSettings } from "./EstimationSettings.js";
+export { default as StyleSettings } from "./StyleSettings.js";
 

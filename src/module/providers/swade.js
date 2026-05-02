@@ -1,4 +1,4 @@
-import { sGet, t } from "../utils.js";
+import { findStatusEffect, sGet, t } from "../utils.js";
 import EstimationProvider from "./templates/Base.js";
 
 export default class swadeEstimationProvider extends EstimationProvider {
@@ -58,7 +58,7 @@ export default class swadeEstimationProvider extends EstimationProvider {
 	}
 
 	tokenEffects(token) {
-		const incapIcon = CONFIG.statusEffects.find((effect) => effect.id === "incapacitated").img;
+		const incapIcon = findStatusEffect("incapacitated")?.img;
 		return !!token.actor.effects.find((e) => e.img === incapIcon);
 	}
 

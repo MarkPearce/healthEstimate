@@ -90,6 +90,16 @@ export function disableCheckbox(checkbox, boolean) {
 	checkbox.disabled = !boolean;
 }
 
+// PF2e (and possibly other systems) replace CONFIG.statusEffects with a
+// non-array — Map, plain object, or iterable. Normalize before searching.
+export function findStatusEffect(id) {
+	const list = CONFIG.statusEffects;
+	if (!list) return undefined;
+	if (Array.isArray(list)) return list.find((x) => x?.id === id);
+	if (list instanceof Map) return [...list.values()].find((x) => x?.id === id);
+	return Object.values(list).find((x) => x?.id === id);
+}
+
 /**
  * Repositions the token's elevation tooltip.
  * @param {Token} token 	The token being refreshed

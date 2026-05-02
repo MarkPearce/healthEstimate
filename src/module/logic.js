@@ -1,7 +1,7 @@
 import * as providers from "./providers/_module.js";
 import { providerKeys } from "./providers/_shared.js";
 import { registerSettings } from "./settings.js";
-import { addSetting, isEmpty, sGet } from "./utils.js";
+import { addSetting, findStatusEffect, isEmpty, sGet } from "./utils.js";
 
 export class HealthEstimate {
 	constructor() {
@@ -465,7 +465,7 @@ export class HealthEstimate {
 	tokenEffectsPath(token) {
 		const deadIcon = this.estimationProvider.deathMarker.config
 			? this.deathMarker
-			: CONFIG.statusEffects.find((x) => x.id === "dead")?.img ?? this.deathMarker;
+			: findStatusEffect("dead")?.img ?? this.deathMarker;
 		return Array.from(token.actor.effects.values()).some((x) => x.img === deadIcon);
 	}
 

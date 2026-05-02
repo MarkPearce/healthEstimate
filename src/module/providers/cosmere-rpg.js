@@ -1,4 +1,4 @@
-import EstimationProvider from "./templates/Base";
+import EstimationProvider from "./templates/Base.js";
 
 export default class cosmereRpgEstimationProvider extends EstimationProvider {
 	fraction(token) {
