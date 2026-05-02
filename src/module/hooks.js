@@ -152,11 +152,11 @@ export class HealthEstimateHooks {
 	// /////////////
 
 	/**
-	 * Chat Styling
+	 * Chat Styling. v13+ passes a native HTMLElement instead of jQuery.
 	 */
 	static onRenderChatMessage(app, html, data) {
-		if (html.find(".hm_messageheal").length) html.addClass("hm_message hm_messageheal");
-		else if (html.find(".hm_messagetaken").length) html.addClass("hm_message hm_messagetaken");
+		if (html.querySelector(".hm_messageheal")) html.classList.add("hm_message", "hm_messageheal");
+		else if (html.querySelector(".hm_messagetaken")) html.classList.add("hm_message", "hm_messagetaken");
 	}
 
 	/**

@@ -156,7 +156,7 @@ export class HealthEstimate {
 		const estimate = canvas.interface.healthEstimate.addChild(new PIXI.Text(desc, style));
 		this._cache[token.id] = estimate;
 		token.healthEstimate = estimate;
-		estimate.alpha = token.mesh.alpha;
+		estimate.alpha = token.mesh?.alpha ?? 1;
 		estimate.scale.set(scale * 0.25);
 		estimate.anchor.set(0.5, 1);
 		estimate.position.set(token.x + (width / 2), token.y + x + y);
@@ -176,7 +176,7 @@ export class HealthEstimate {
 		estimate.style.fill = color;
 		estimate.style.stroke = stroke;
 		estimate.visible = true;
-		estimate.alpha = token.mesh.alpha;
+		estimate.alpha = token.mesh?.alpha ?? 1;
 		estimate.scale.set(scale * 0.25);
 		estimate.position.set(token.x + (width / 2), token.y + x + y);
 	}

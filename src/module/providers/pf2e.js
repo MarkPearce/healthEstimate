@@ -31,7 +31,9 @@ export default class pf2eEstimationProvider extends EstimationProvider {
 			hp.max = token.actor.hitPoints.max ?? 5 * game.actors.get(master.id).system.details.level.value;
 		}
 		let temp = sGet("core.addTemp") && hp.temp ? hp.temp : 0;
-		let sp = game.settings.get("pf2e", "staminaVariant") && sGet("PF2E.staminaToHp") && hp.sp
+		const staminaEnabled = game.settings.settings.has("pf2e.staminaVariant")
+			&& game.settings.get("pf2e", "staminaVariant");
+		let sp = staminaEnabled && sGet("PF2E.staminaToHp") && hp.sp
 			? hp.sp
 			: { value: 0, max: 0 };
 		return Math.min((hp.value + sp.value + temp) / (hp.max + sp.max), 1);
